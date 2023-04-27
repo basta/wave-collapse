@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://66v8g06nn3td"]
+
+[ext_resource type="Shader" path="res://resolution.gdshader" id="1_dwe13"]
+[ext_resource type="Script" path="res://shader_control.gd" id="2_ikoq6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qycab"]
+shader = ExtResource("1_dwe13")
+shader_parameter/color = Vector4(0.5, 0, 0, 1)
+shader_parameter/RESOLUTION = 7.0
+
+[sub_resource type="Gradient" id="Gradient_vnn44"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_drywn"]
+gradient = SubResource("Gradient_vnn44")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("ShaderMaterial_qycab")
+position = Vector2(693.5, 323.5)
+scale = Vector2(9.922, 9.922)
+texture = SubResource("GradientTexture2D_drywn")
+script = ExtResource("2_ikoq6")

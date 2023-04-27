@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dynlv2pec2iue"
+path="res://.godot/imported/wavecompute.glsl-666cdb0a76f31e62206141da43e782a5.res"
+
+[deps]
+
+source_file="res://wavecompute.glsl"
+dest_files=["res://.godot/imported/wavecompute.glsl-666cdb0a76f31e62206141da43e782a5.res"]
+
+[params]
+

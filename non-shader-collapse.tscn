@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctnl0fxv5ixja"]
+
+[ext_resource type="Script" path="res://non-shader-collapse.gd" id="1_jjq3b"]
+[ext_resource type="Texture2D" uid="uid://b3eggbnnnjb8p" path="res://neon8nnature.png" id="2_lngme"]
+[ext_resource type="Script" path="res://sea.gd" id="3_iahqm"]
+[ext_resource type="Script" path="res://Tiles.gd" id="3_uiy52"]
+[ext_resource type="Script" path="res://beach.gd" id="4_77f6n"]
+
+[sub_resource type="TileSet" id="TileSet_gwxqy"]
+
+[node name="non-shader-collapse" type="Node2D"]
+script = ExtResource("1_jjq3b")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_gwxqy")
+format = 2
+
+[node name="Template" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(130, 64)
+texture = ExtResource("2_lngme")
+hframes = 4
+frame = 3
+
+[node name="Tiles" type="Node" parent="."]
+script = ExtResource("3_uiy52")
+
+[node name="Sea" type="Node" parent="Tiles"]
+script = ExtResource("3_iahqm")
+
+[node name="Beach" type="Node" parent="Tiles"]
+script = ExtResource("4_77f6n")

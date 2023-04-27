@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3sovufs0hsdd"]
+
+[ext_resource type="Script" path="res://solver_test.gd" id="1_2ge14"]
+[ext_resource type="Texture2D" uid="uid://tnv24o8t7a21" path="res://map.png" id="2_2bqpg"]
+
+[node name="SolverTest" type="Node2D"]
+script = ExtResource("1_2ge14")
+
+[node name="template" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_2bqpg")
+hframes = 4
+frame = 2
