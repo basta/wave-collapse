@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://q8ohunnksugw"]
+
+[ext_resource type="Script" path="res://matrix_compute_controller.gd" id="1_qk8dy"]
+[ext_resource type="Script" path="res://renderer.gd" id="2_uyhot"]
+[ext_resource type="Texture2D" uid="uid://tnv24o8t7a21" path="res://map.png" id="3_1etnn"]
+
+[node name="WaveCompute" type="Node2D"]
+
+[node name="MatrixComputeController" type="Node" parent="."]
+script = ExtResource("1_qk8dy")
+
+[node name="SpriteRenderer" type="Node2D" parent="."]
+position = Vector2(75, 73)
+script = ExtResource("2_uyhot")
+
+[node name="template" type="Sprite2D" parent="SpriteRenderer"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_1etnn")
+hframes = 4
+frame = 2

@@ -1,14 +1,16 @@
 extends Node
 
+class_name ComputeController
+
 var rd := RenderingServer.create_local_rendering_device()
-var X := 40
-var Y := 40
+var X := 10
+var Y := 10
 var N_states := 4
 
 # Called when the node enters the scene tree for the first time.
 
 func load_shader(filename) -> RID:
-	var shader_file := load("res://wavecompute.glsl")
+	var shader_file := load(filename)
 	var shader_spirv: RDShaderSPIRV = shader_file.get_spirv()
 	print(shader_spirv.compile_error_compute)
 	var shader := rd.shader_create_from_spirv(shader_spirv)
@@ -127,7 +129,7 @@ func add_constraint_inplace(constr_data, state_data):
 	for idx in len(state_data):
 		if constr_data[idx] != 0: continue
 		var states = int_to_states(state_data[idx])
-		if len(states) < best_len:
+		if len(states) < best_len and len(states) != 0:
 			best_idx = idx
 			best_len = len(states)
 			
@@ -149,7 +151,7 @@ func add_constraint_inplace(constr_data, state_data):
 		
 		
 func _ready():
-	shader = load_shader("")
+	shader = load_shader("res://wavecompute.glsl")
 
 var state_data = []
 var constr_data = []
