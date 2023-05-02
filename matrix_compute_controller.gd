@@ -33,6 +33,9 @@ func image_to_matrix(path):
 			matrix[x][y] = data[pixel]
 	return matrix
 	
+func print_debug_buffer(buf):
+	for i in len(buf):
+		print(i, ": ", buf[i])
 		
 
 func iteration_matrix(shader, constraints_data, state_data, matrix, window_x=3, window_y=3):
@@ -77,13 +80,13 @@ func iteration_matrix(shader, constraints_data, state_data, matrix, window_x=3, 
 	# Read back the data from the buffer
 	var output_bytes := rd.buffer_get_data(state_buffer)
 	var output := output_bytes.to_int32_array()
-	print("Debug data:", rd.buffer_get_data(debug_buffer).to_int32_array())
+#	print_debug_buffer(rd.buffer_get_data(debug_buffer).to_int32_array())
 	return output
 	
 var matrix_shader
 var matrix
 func _ready():
-	matrix = image_to_matrix("res://checkerboard.png")
+	matrix = image_to_matrix("res://diag.png")
 	matrix_shader = load_shader("wavecompute-matrix.glsl")
 	for x in X:
 			for y in Y:
@@ -94,16 +97,17 @@ func _ready():
 	state_data[0] = 1
 	
 	
-	var iters = 1 
+
+
+func _process(delta):
+	var iters = 50
 	for iter in iters:
+		print("Iteration: ", iter)
 		state_data = iteration_matrix(matrix_shader, constr_data, state_data,
-			matrix
+			matrix, 3, 3
 		)
-	print_buffer(state_data)
+		print_buffer(state_data)
 	print()
 	
 	add_constraint_inplace(constr_data, state_data)
 	get_parent().get_node("SpriteRenderer").render_buffer(state_data, X, Y)
-
-func _process(delta):
-	pass

@@ -145,6 +145,7 @@ func add_constraint_inplace(constr_data, state_data):
 		if option and ctr == pick:
 			var val = pow(2, i)
 			constr_data[best_idx] = val
+			state_data[best_idx] = val
 			return
 		elif option:
 			ctr += 1
