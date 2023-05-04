@@ -86,7 +86,7 @@ func iteration_matrix(shader, constraints_data, state_data, matrix, window_x=3, 
 var matrix_shader
 var matrix
 func _ready():
-	matrix = image_to_matrix("res://diag.png")
+	matrix = image_to_matrix("res://sea.png")
 	matrix_shader = load_shader("wavecompute-matrix.glsl")
 	for x in X:
 			for y in Y:
@@ -100,7 +100,7 @@ func _ready():
 
 
 func _process(delta):
-	var iters = 50
+	var iters = 10
 	for iter in iters:
 		print("Iteration: ", iter)
 		state_data = iteration_matrix(matrix_shader, constr_data, state_data,
